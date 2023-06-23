@@ -200,15 +200,13 @@ public class InGameNetworkManager : MonoBehaviourPunCallbacks, IPunTurnManagerCa
 
     
 
-    public void SendMove(int cardNum)       // 테스트 용 ( 버튼에 맵핑 )
+    public void SendMove(int cardNum)
     {
         turnManager.SendMove(cardNum, true);
     }
     public void OnTurnBegins(int turn)
     {
         Debug.Log("OnTurnBegins : " + turn);
-        Debug.Log("myTurn : " + myTurn);
-        Debug.Log("playerList.Length : " + playerList.Length);
 
         int turnNum = (turn - 1) % playerList.Length;
 

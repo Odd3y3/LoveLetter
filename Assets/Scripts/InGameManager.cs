@@ -38,39 +38,9 @@ public class InGameManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        //(테스트 용)
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            DrawCardAll();
-        }
-    }
-
     private void FixedUpdate()
     {
         remainCardCount.text = inGameNetworkManager.GetRemainCardsCountInDeck().ToString();
-    }
-
-    void DrawCardAll()
-    {
-        //왼쪽 카드 뽑는 애니메이션
-        GameObject leftCard = Instantiate(cardSources[0], cardDeckPos, Quaternion.identity);
-        Vector3 leftCardEndPos = new Vector3(-12.0f, cardDeckPos.y, 0f);
-        StartCoroutine(MoveCard(leftCard.transform, leftCardEndPos));
-    }
-
-    IEnumerator MoveCard(Transform card, Vector3 endPos)
-    {
-        float t = 0f;
-        //1초 뒤에 카드(뒷면) 오브젝트 삭제
-        while (t < 1f)
-        {
-            t += Time.deltaTime;
-            card.position = Vector3.Lerp(card.position, endPos, 0.01f);
-            yield return null;
-        }
-        Destroy(card.gameObject);
     }
 
 
@@ -88,11 +58,6 @@ public class InGameManager : MonoBehaviour
         }
     }
 
-    private void DrawCardAnim(PlayerDir playerDir)
-    {
-
-    }
-
     public void MyTurnStart()
     {
         hand.SetActive(false);
@@ -100,24 +65,30 @@ public class InGameManager : MonoBehaviour
         selectCardUI.SetCard(myHandCards[0], myHandCards[1]);
     }
 
-    public void UseCardLeft()
+    public void UseCard(bool isLeft)
     {
-        int remainCardNum = myHandCards[1];
+        int remainCardNum;
+        int useCardNum;
+        if (isLeft)
+        {
+            remainCardNum = myHandCards[1];
+            useCardNum = myHandCards[0];
+        }
+        else
+        {
+            remainCardNum = myHandCards[0];
+            useCardNum = myHandCards[1];
+        }
         myHandCards[0] = 0;
         myHandCards[1] = 0;
         Destroy(handCardInstance); 
         DrawCard(remainCardNum);
         hand.SetActive(true);
-    }
 
-    public void UseCardRight()
-    {
-        int remainCardNum = myHandCards[0];
-        myHandCards[0] = 0;
-        myHandCards[1] = 0;
-        Destroy(handCardInstance);
-        DrawCard(remainCardNum);
-        hand.SetActive(true);
+        //카드를 사용하고 ( Card class 만들기 )***
+        //NetworkManager에게 전달하고, 턴 넘어감
+        //(선택지가 있는 카드의 경우, 바로 넘어가지 않고, 선택할 옵션이 나오고 그 다음에 턴을 넘겨야함.)
+        inGameNetworkManager.SendMove(useCardNum);
     }
 }
 

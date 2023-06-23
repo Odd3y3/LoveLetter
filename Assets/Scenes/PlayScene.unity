@@ -1683,7 +1683,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 196818033}
         m_TargetAssemblyTypeName: SelectCardUI, Assembly-CSharp
-        m_MethodName: UseCard
+        m_MethodName: SelectCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

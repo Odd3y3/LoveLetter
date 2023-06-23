@@ -73,17 +73,15 @@ public class SelectCardUI : MonoBehaviour
         selectButton.SetActive(true);
     }
 
-    public void UseCard()
+    public void SelectCard()
     {
         if (selectedCard == 1)
         {
-            inGameNetworkManager.SendMove(leftCardNum);
-            inGameManager.UseCardLeft();
+            inGameManager.UseCard(true);
         }
         else if (selectedCard == 2)
         {
-            inGameNetworkManager.SendMove(rightCardNum);
-            inGameManager.UseCardRight();
+            inGameManager.UseCard(false);
         }
         else
         {

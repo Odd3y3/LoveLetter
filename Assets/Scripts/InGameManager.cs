@@ -65,6 +65,10 @@ public class InGameManager : MonoBehaviour
         selectCardUI.SetCard(myHandCards[0], myHandCards[1]);
     }
 
+    /// <summary>
+    /// 실제 카드를 사용하는 함수
+    /// </summary>
+    /// <param name="isLeft">왼쪽 카드를 사용 할 때 true</param>
     public void UseCard(bool isLeft)
     {
         int remainCardNum;
@@ -86,16 +90,13 @@ public class InGameManager : MonoBehaviour
         hand.SetActive(true);
 
         //카드를 사용하고 ( Card class 만들기 )***
+
+        //CardOptionOrUseCard(useCardNum);
+
         //NetworkManager에게 전달하고, 턴 넘어감
         //(선택지가 있는 카드의 경우, 바로 넘어가지 않고, 선택할 옵션이 나오고 그 다음에 턴을 넘겨야함.)
-        inGameNetworkManager.SendMove(useCardNum);
-    }
-}
 
-enum PlayerDir
-{
-    Left,
-    Right,
-    Top,
-    Me
+        //inGameNetworkManager.SendMove(useCardNum);        SelectCardUI에서..??????
+    }
+
 }

@@ -73,15 +73,21 @@ public class SelectCardUI : MonoBehaviour
         selectButton.SetActive(true);
     }
 
+    /// <summary>
+    /// 카드 선택 버튼을 눌렀을 때 호출되는 함수.
+    /// </summary>
     public void SelectCard()
     {
+        int useCardNum = 0;
         if (selectedCard == 1)
         {
             inGameManager.UseCard(true);
+            useCardNum = leftCardNum;
         }
         else if (selectedCard == 2)
         {
             inGameManager.UseCard(false);
+            useCardNum = rightCardNum;
         }
         else
         {
@@ -89,17 +95,41 @@ public class SelectCardUI : MonoBehaviour
             return;
         }
 
+        DisableSelectCardUI();
+
+        //여기에 UI설정하는 거?/???????????
+        //카드 번호에 따라서 상대 선택하는 UI
+        //그리고 1번은 몇번인지 정하는거 까지 해야댐
+
+        //inGameNetworkManager.SendMove(useCardNum);
+    }
+
+
+    /// <summary>
+    /// SelectCardUI 없애는 함수.
+    /// </summary>
+    private void DisableSelectCardUI()
+    {
         SetSelectedCardToZero();
         Destroy(leftCardInstance);
         Destroy(rightCardInstance);
         gameObject.SetActive(false);
     }
 
-    public void SetSelectedCardToZero()
+
+    /// <summary>
+    /// 자신이 Select한 카드 초기화 하는 함수. ( 처음에 선택하지 않은 상태로 바꾸는 함수 )
+    /// </summary>
+    private void SetSelectedCardToZero()
     {
         leftCard.transform.localScale = originalCardScale;
         rightCard.transform.localScale = originalCardScale;
         selectedCard = 0;
         selectButton.SetActive(false);
     }
+
+
+    // 카드 추가 옵션 UI
+
+
 }

@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Card1 : CardBase
 {
-    
+    public Card1()
+    {
+        this.Num = 1;
+        IsRequireTargetPlayer = true;
+        IsRequireOptionNum = true;
+    }
+
+    public override void Use()
+    {
+        base.Use();
+    }
 }
 public class Card2 : CardBase
 {

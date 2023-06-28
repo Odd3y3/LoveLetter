@@ -8,6 +8,7 @@ public class InGameManager : MonoBehaviour
     private InGameNetworkManager inGameNetworkManager;
 
     public SelectCardUI selectCardUI;
+    public TargetPlayerUI targetPlayerUI;
     public TextMeshProUGUI remainCardCount;
     
     public GameObject hand;
@@ -85,18 +86,28 @@ public class InGameManager : MonoBehaviour
         }
         myHandCards[0] = 0;
         myHandCards[1] = 0;
-        Destroy(handCardInstance); 
+        Destroy(handCardInstance);
         DrawCard(remainCardNum);
+        
+
+
+        //TargetPlayerUI 가 필요한지
+        CardBase useCard = CardsInfo.GetCardInfo(useCardNum);
+        if (useCard.IsRequireTargetPlayer)
+        {
+            targetPlayerUI.gameObject.SetActive(true);
+            targetPlayerUI.SetCard(useCard);
+        }
+        else
+        {
+            EndTurn(useCardNum);
+        }
+    }
+
+    public void EndTurn(int useCardNum)
+    {
+        inGameNetworkManager.SendMove(useCardNum);
         hand.SetActive(true);
-
-        //카드를 사용하고 ( Card class 만들기 )***
-
-        //CardOptionOrUseCard(useCardNum);
-
-        //NetworkManager에게 전달하고, 턴 넘어감
-        //(선택지가 있는 카드의 경우, 바로 넘어가지 않고, 선택할 옵션이 나오고 그 다음에 턴을 넘겨야함.)
-
-        //inGameNetworkManager.SendMove(useCardNum);        SelectCardUI에서..??????
     }
 
 }

@@ -1,6 +1,7 @@
 using Photon.Pun.Demo.PunBasics;
 using UnityEngine;
 
+
 public class SelectCardUI : MonoBehaviour
 {
     private InGameNetworkManager inGameNetworkManager;
@@ -96,12 +97,6 @@ public class SelectCardUI : MonoBehaviour
         }
 
         DisableSelectCardUI();
-
-        //여기에 UI설정하는 거?/???????????
-        //카드 번호에 따라서 상대 선택하는 UI
-        //그리고 1번은 몇번인지 정하는거 까지 해야댐
-
-        //inGameNetworkManager.SendMove(useCardNum);
     }
 
 

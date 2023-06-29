@@ -200,9 +200,10 @@ public class InGameNetworkManager : MonoBehaviourPunCallbacks, IPunTurnManagerCa
 
     
 
-    public void SendMove(int cardNum)
+    public void SendMove(int cardNum, int targetPlayerNum, int optionNum)
     {
-        turnManager.SendMove(cardNum, true);
+        object packetInfo = new int[]{cardNum, targetPlayerNum, optionNum};
+        turnManager.SendMove(packetInfo, true);
     }
     public void OnTurnBegins(int turn)
     {
@@ -246,7 +247,15 @@ public class InGameNetworkManager : MonoBehaviourPunCallbacks, IPunTurnManagerCa
 
     public void OnPlayerFinished(Player player, int turn, object move)
     {
-        Debug.Log("OnPlayerFinished : " + player.NickName + " " + turn + " " + move);
+        Debug.Log("OnPlayerFinished : " + player.NickName + " " + turn);
+        //int[] moveInfo = (int[])move;
+        List<int> moveInfo = new List<int>();
+        foreach (var item in move as IEnumerable)
+        {
+            moveInfo.Add((int)item);
+        }
+        Debug.Log($"MoveInfo : {moveInfo[0]} {moveInfo[1]} {moveInfo[1]}");
+
         if(PhotonNetwork.LocalPlayer == player)
             turnManager.BeginTurn();
     }

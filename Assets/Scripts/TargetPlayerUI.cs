@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum Dir
+{
+    None = 0,
+    Left,
+    Top,
+    Right
+}
 public class TargetPlayerUI : MonoBehaviour
 {
-    enum Dir
-    {
-        None = 0,
-        Top,
-        Left,
-        Right
-    }
 
     private InGameManager inGameManager;
+    [SerializeField]
+    private GameObject optionNumSelectUI;
 
     private CardBase useCard;
     private Dir targetDir = Dir.None;
+    
 
     private void Awake()
     {
@@ -27,6 +30,11 @@ public class TargetPlayerUI : MonoBehaviour
     public void SetCard(CardBase useCard)
     {
         this.useCard = useCard;
+    }
+
+    public int GetTargetDir()
+    {
+        return (int)targetDir;
     }
 
     public void OnClickTopPlayer()
@@ -54,12 +62,11 @@ public class TargetPlayerUI : MonoBehaviour
             //IsRequireOptionNum 이 true 일때, (현재는 카드 1번 일 때만)
             //그 다음 UI 띄우기
 
-            //예비 코드
-            inGameManager.EndTurn(useCard.Num);
+            optionNumSelectUI.SetActive(true);
         }
         else
         {
-            inGameManager.EndTurn(useCard.Num);
+            inGameManager.EndTurn(useCard.Num, (int)targetDir);
         }
         DisableTargetPlayerUI();
     }

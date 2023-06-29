@@ -15,13 +15,13 @@ public class CardInHand : MonoBehaviour
     private Vector3 handCardSizeUpPos = new Vector3(0f, -2.0f, 0f);
 
 
-    public void MouseOnCard()
+    private void MouseOnCard()
     {
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         transform.position = handCardSizeUpPos;
     }
 
-    public void MouseOffCard()
+    private void MouseOffCard()
     {
         transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
         transform.position = handCardPos;
@@ -30,8 +30,7 @@ public class CardInHand : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MouseCursor mouseCursor;
-        if(collision.TryGetComponent<MouseCursor>(out mouseCursor))
+        if (collision.TryGetComponent<MouseCursor>(out MouseCursor mouseCursor))
         {
             MouseOnCard();
         }
@@ -39,10 +38,19 @@ public class CardInHand : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        MouseCursor mouseCursor;
-        if (collision.TryGetComponent<MouseCursor>(out mouseCursor))
+        if (collision.TryGetComponent<MouseCursor>(out MouseCursor mouseCursor))
         {
             MouseOffCard();
         }
     }
+
+    //private void OnMouseEnter()
+    //{
+    //    MouseOnCard();
+    //}
+
+    //private void OnMouseExit()
+    //{
+    //    MouseOffCard();
+    //}
 }

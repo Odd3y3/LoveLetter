@@ -104,9 +104,9 @@ public class InGameManager : MonoBehaviour
         }
     }
 
-    public void EndTurn(int useCardNum)
+    public void EndTurn(int useCardNum, int targetPlayer = 0, int optionNum = 0)
     {
-        inGameNetworkManager.SendMove(useCardNum);
+        inGameNetworkManager.SendMove(useCardNum, targetPlayer, optionNum);
         hand.SetActive(true);
     }
 

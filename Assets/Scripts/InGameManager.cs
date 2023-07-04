@@ -21,10 +21,11 @@ public class InGameManager : MonoBehaviour
     Vector3 cardDeckPos = new Vector3(-1f, 0.5f, 0f);            //카드 덱 위치
     Vector3 myHandCardPos = new Vector3(0f, -3.5f, 0f);         //내손에 있는 카드 위치
 
-    int[] myHandCards;              //내손에 있는 카드, 없다면 0
+    int[] myHandCards;              //내손에 있는 카드 number, 없다면 0
 
     void Awake()
     {
+        
         inGameNetworkManager = FindFirstObjectByType<InGameNetworkManager>();
         if (inGameNetworkManager == null)
             Debug.LogWarning("inGameNetworkManager is null.");

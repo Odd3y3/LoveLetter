@@ -766,14 +766,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 150408729}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -828,7 +828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 8
   previewCard: {fileID: 200518550}
 --- !u!1 &163110971
 GameObject:
@@ -1668,14 +1667,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 350405978}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1730,7 +1729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 2
   previewCard: {fileID: 1421353716}
 --- !u!1 &381285279
 GameObject:
@@ -2464,14 +2462,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563820979}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2526,7 +2524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 1
   previewCard: {fileID: 14175869}
 --- !u!1 &613919211
 GameObject:
@@ -3079,7 +3076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3be6908e53c3dc4999c9aee2a2d7e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionNumSelectUI: {fileID: 1044807271}
+  optionNumSelectUI: {fileID: 1044807273}
 --- !u!1001 &800025674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4321,10 +4318,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1044807271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3be6908e53c3dc4999c9aee2a2d7e95, type: 3}
+  m_Script: {fileID: 11500000, guid: dc597397ddeaec641959c504a2c13df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionNumSelectUI: {fileID: 0}
 --- !u!1 &1052289447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4410,14 +4406,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052289452}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4472,7 +4468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 3
   previewCard: {fileID: 79352136}
 --- !u!1 &1062806284
 GameObject:
@@ -4559,14 +4554,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1062806289}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4621,7 +4616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 7
   previewCard: {fileID: 1203206058}
 --- !u!1 &1097844202
 GameObject:
@@ -5799,14 +5793,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1452420882}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5861,7 +5855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 6
   previewCard: {fileID: 1383385601}
 --- !u!1 &1480576745 stripped
 GameObject:
@@ -7473,14 +7466,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1885085613}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7535,7 +7528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 4
   previewCard: {fileID: 859137875}
 --- !u!1 &1930743709
 GameObject:
@@ -8302,14 +8294,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2043273177}
-        m_TargetAssemblyTypeName: OptionNumSelectUIButton, Assembly-CSharp
-        m_MethodName: SelectOption
-        m_Mode: 1
+      - m_Target: {fileID: 1044807273}
+        m_TargetAssemblyTypeName: OptionNumSelectUI, Assembly-CSharp
+        m_MethodName: OnClickSelectOption
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8364,7 +8356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029eca2296a2a8439b3d4cf3369c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNumber: 5
   previewCard: {fileID: 1480576745}
 --- !u!1001 &2092846400
 PrefabInstance:

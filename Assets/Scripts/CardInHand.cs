@@ -44,13 +44,4 @@ public class CardInHand : MonoBehaviour
         }
     }
 
-    //private void OnMouseEnter()
-    //{
-    //    MouseOnCard();
-    //}
-
-    //private void OnMouseExit()
-    //{
-    //    MouseOffCard();
-    //}
 }

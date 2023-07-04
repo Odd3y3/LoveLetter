@@ -14,7 +14,7 @@ public class TargetPlayerUI : MonoBehaviour
 
     private InGameManager inGameManager;
     [SerializeField]
-    private GameObject optionNumSelectUI;
+    private OptionNumSelectUI optionNumSelectUI;
 
     private CardBase useCard;
     private Dir targetDir = Dir.None;
@@ -62,7 +62,8 @@ public class TargetPlayerUI : MonoBehaviour
             //IsRequireOptionNum 이 true 일때, (현재는 카드 1번 일 때만)
             //그 다음 UI 띄우기
 
-            optionNumSelectUI.SetActive(true);
+            optionNumSelectUI.gameObject.SetActive(true);
+            optionNumSelectUI.SetTargetInfo((int)targetDir);
         }
         else
         {

@@ -189,6 +189,10 @@ public class InGameNetworkManager : MonoBehaviourPunCallbacks, IPunTurnManagerCa
     }
 
 
+    /// <summary>
+    /// 덱에 카드가 몇장 남아있는지
+    /// </summary>
+    /// <returns></returns>
     public int GetRemainCardsCountInDeck()
     {
         int count = DECK_LENGTH - cardDeckPointer + 1;
@@ -197,20 +201,57 @@ public class InGameNetworkManager : MonoBehaviourPunCallbacks, IPunTurnManagerCa
 
 
 
-
-    
-
+    /// <summary>
+    /// 네트워크로 보낼 정보를 받아 object로 변환 후 turnManager로 정보 보내줌.
+    /// 그리고 턴이 넘어감
+    /// </summary>
+    /// <param name="cardNum"></param>
+    /// <param name="targetPlayerNum"></param>
+    /// <param name="optionNum"></param>
     public void SendMove(int cardNum, int targetPlayerNum, int optionNum)
     {
-        object packetInfo = new int[]{cardNum, targetPlayerNum, optionNum};
+        object packetInfo = new int[3]{ cardNum, targetPlayerNum, optionNum};
         turnManager.SendMove(packetInfo, true);
     }
+
+
+    /// <summary>
+    /// Network에서 받은 Object를 Packet으로 변환해주는 함수
+    /// </summary>
+    /// <param name="move"></param>
+    /// <returns></returns>
+    private Packet ObjectToPacket(object move)
+    {
+        int[] moveInfo = (int[])move;
+
+        Packet packet = new Packet(moveInfo[0], moveInfo[1], moveInfo[2]);
+
+        return packet;
+    }
+
+
+
+
+
+
+
+    //-----------------------------------------------------------------------------------------------------
+    //------------- TurnManager Callback 함수 ----------------
+    
+
+
+
+    /// <summary>
+    /// 턴이 시작 될 때 호출되는 함수
+    /// </summary>
+    /// <param name="turn"></param>
     public void OnTurnBegins(int turn)
     {
         Debug.Log("OnTurnBegins : " + turn);
 
-        int turnNum = (turn - 1) % playerList.Length;
 
+        //현재 턴 계산
+        int turnNum = (turn - 1) % playerList.Length;
         if(turnNum == myTurn)                           //자기 턴일 때
         {
             inGameManager.DrawCard(cardDeck[cardDeckPointer]);   //카드 뽑기
@@ -232,37 +273,65 @@ public class InGameNetworkManager : MonoBehaviourPunCallbacks, IPunTurnManagerCa
         }
     }
 
+    //현재 사용되지 않음.
     public void OnTurnCompleted(int turn)
     {
         Debug.Log("OnTurnCompleted : " + turn);
-
-        
     }
 
+    //현재 사용되지 않음.
     public void OnPlayerMove(Player player, int turn, object move)
     {
         Debug.Log("OnPlayerMove : " + player.NickName + " " + turn + " " + move);
-
     }
 
+
+    /// <summary>
+    /// SendMove로 정보를 보내면서 턴을 넘길 때 호출 되는 함수.
+    /// Object 정보를 받아서 사용
+    /// </summary>
+    /// <param name="player"></param>
+    /// <param name="turn"></param>
+    /// <param name="move"></param>
     public void OnPlayerFinished(Player player, int turn, object move)
     {
         Debug.Log("OnPlayerFinished : " + player.NickName + " " + turn);
-        //int[] moveInfo = (int[])move;
-        List<int> moveInfo = new List<int>();
-        foreach (var item in move as IEnumerable)
-        {
-            moveInfo.Add((int)item);
-        }
-        Debug.Log($"MoveInfo : {moveInfo[0]} {moveInfo[1]} {moveInfo[1]}");
+        
+        //move -> Packet으로 변환
+        Packet moveInfo = ObjectToPacket(move);
 
+        Debug.Log($"MoveInfo : {moveInfo.CardNum} {moveInfo.TargetPlayerNum} {moveInfo.OptionNum}");
+
+
+
+        //턴 넘김
         if(PhotonNetwork.LocalPlayer == player)
             turnManager.BeginTurn();
     }
 
+
+    //현재 사용되지 않음.
     public void OnTurnTimeEnds(int turn)
     {
         //타임 아웃 설정
         //( 일단은 시간 제한 0으로 무시 )
+    }
+}
+
+
+/// <summary>
+/// 턴이 넘어 갈 때(플레이어가 카드를 선택 할 때), 네트워크로 주고받을 데이터 정보
+/// </summary>
+struct Packet
+{
+    public int CardNum { get; }
+    public int TargetPlayerNum { get; }
+    public int OptionNum { get; }
+
+    public Packet(int cardNum, int targetPlayerNum, int optionNum)
+    {
+        CardNum = cardNum;
+        TargetPlayerNum = targetPlayerNum;
+        OptionNum = optionNum;
     }
 }

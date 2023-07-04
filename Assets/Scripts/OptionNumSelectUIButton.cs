@@ -3,41 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OptionNumSelectUIButton : MonoBehaviour
-    , IPointerEnterHandler, IPointerExitHandler
+public class OptionNumSelectUIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
-    public int optionCardNumber;
     [SerializeField]
     private GameObject previewCard;
 
-    private InGameManager inGameManager;
-    private TargetPlayerUI targetPlayerUI;
 
-    private void Awake()
-    {
-        inGameManager = FindFirstObjectByType<InGameManager>();
-        if (inGameManager == null)
-            Debug.LogWarning("inGameManager is null.");
-
-        targetPlayerUI = FindFirstObjectByType<TargetPlayerUI>();
-        if (targetPlayerUI == null)
-            Debug.LogWarning("targetPlayerUI is null.");
-    }
-
+    /// <summary>
+    /// 버튼 위로 마우스가 올라왔을 때, preview 카드를 Enable함.
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         previewCard.SetActive(true);
     }
 
+
+
+    /// <summary>
+    /// 버튼 위에서 마우스가 내려왔을 때, preview 카드를 Disable함.
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
     {
         previewCard.SetActive(false);
     }
 
-    public void SelectOption()
-    {
-        inGameManager.EndTurn(1, targetPlayerUI.GetTargetDir(), optionCardNumber);
-        transform.parent.gameObject.SetActive(false);
-    }
 }
